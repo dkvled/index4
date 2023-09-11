@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- 글쓰기 페이지 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>WavingFlag</title>
+
+    <link rel="stylesheet" href="index4.css">
+    <!-- <link rel="stylesheet" href="{% static 'index4.css' %}"> -->
+    <link rel="shortcut icon" href="imgs/instagram.png">
+</head>
+
+<body>
+
+        <div id="main_container">
+            <!-- 상단바 -->
+            <div class="top_menu">
+                <div class="back_button">
+                    <img class = "icon1" src = "https://i.ibb.co/2Y1r2HV/icon.png">
+                </div>
+                <div class="page_name">트랜디하게 중고 옷 거래하기!</div>
+                <div class="home_button">
+                    <a style="color: black" href="https://www.instagram.com/waving_flag_official">사용방법</a>
+                </div>
+            </div>    
+
+            <div class="post_form_container">
+
+                    <div style="height : 50px"> </div>
+                    <p>
+                       <img src = {{img}} class = "main_img" style="width : 100%; height:100%; max-width:550px; max-height:600px">
+                    </p>
+                    <div class = "product_title"> {{title}} </div>
+                    <div class = "product_price" style = "height : 50px">
+                        <a class = "sale_price" style="font-weight: bold; font-size : 15px;">  배송비 포함 가격 </a>
+                        <a class = "price" style ="text-decoration:line-through; color : gray; font-size : 13px"> {{price}}원 </a>&nbsp;
+                        <a class = "sale_price" style="font-weight: bold; font-size : 15px;">  {{sale_price}}원 </a> </div>
+                        <button class="modal-custom-button" href="#myModal1">판매하기</button>
+                        <button class="modal-custom-button" href="#myModal2">안심 구매하기</button>
+    
+                        <div id="myModal1" class="modal-custom">
+                            <form method = "post" enctype="multipart/form-data" action="#">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="close-modal">×</span>
+                                    <h2>색상 / 사이즈 입력</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <input class="size_input" type = "text" placeholder="색상 입력하기" required name="color">
+                                    <input class="size_input" type = "text" placeholder="사이즈 입력하기" required name="size">
+                                    <a class="last">기존 사이트와 같은 단위로 입력해주세요.</a>
+                                    <div class="last_price">
+                                        <a class="last1">배송비 포함</a><br>
+                                        <a class="last2">{{sale_price}}원에</a>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input class="submit_btn" type="submit" value="판매하기" name="form1">
+                                </div>
+                            </div>
+                        </form>
+                        
+                        </div>
+                        <div id="myModal2" class="modal-custom">
+    
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="close-modal">×</span>
+                                    <h2>색상 / 사이즈 선택</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-body2">
+                                        <div class="modal-body3" >
+                                            <div class="modal-body-text">(판매자가 입력한 색상) / (입력한 사이즈)</div>
+                                            <button class="modal-body-button">x</button>
+                                        </div>
+                                        <div class="modal-body4">
+                                            <button class="modal-body-purchase">구매하기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <form method = "post">
+
+                                    <input class="submit_btn2" type="submit" value="안심 구매하기" name="form2">
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                                           
+                
+            </div>
+
+        </div>
+        
+
+</body>
+
+<script>
+    var btn = document.querySelectorAll("button.modal-custom-button");
+    var modals = document.querySelectorAll('.modal-custom');
+    var spans = document.getElementsByClassName("close-modal");
+
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].onclick = function (e) {
+            e.preventDefault();
+            modal = document.querySelector(e.target.getAttribute("href"));
+            modal.style.display = "block";
+        }
+        
+        spans[i].onclick = function () {
+            for (var index in modals) {
+                if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
+            }
+        }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target.classList.contains('modal-custom')) {
+            for (var index in modals) {
+                if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
+            }
+        }
+    }
+
+</script>
+
+</html>
